@@ -5,6 +5,7 @@ import { ChartsComponent } from '../charts/charts.component'
 import { EstimateCounterComponent } from '../estimate-counter/estimate-counter.component'
 import { LoggerService } from '../../coreServices/logger/logger.service'
 import { MatDialog } from '@angular/material/dialog'
+import { NgIf } from '@angular/common'
 import { TaskFormComponent } from '../task-form/task-form.component'
 import { TaskListComponent } from '../task-list/task-list.component'
 import { TasksService } from '../tasks.service'
@@ -17,7 +18,8 @@ import { TopHeaderComponent } from '../../top-header/top-header.component'
     TaskListComponent,
     TopHeaderComponent,
     EstimateCounterComponent,
-    ChartsComponent
+    ChartsComponent,
+    NgIf
   ],
   templateUrl: './tasks-container.component.html',
   styleUrl: './tasks-container.component.less'
@@ -36,6 +38,7 @@ export class TasksContainerComponent {
     completed: 0
   }
   chartData = {
+    loaded: false,
     counts: this.chartCounts,
     labels: this.chartLabels
   }
@@ -75,11 +78,10 @@ export class TasksContainerComponent {
     }
 
     this.chartData = {
+      loaded: true,
       counts: [planned.length, inProgress.length, completed.length],
       labels: [...this.taskList.map((m) => m.display)]
     }
-
-    console.log('planned.length:::', this.chartData)
   }
 
   private handleDelete(t: Task) {

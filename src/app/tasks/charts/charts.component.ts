@@ -16,7 +16,6 @@ export class ChartsComponent implements OnInit {
   counts: any[] = []
 
   ngOnInit(): void {
-    this.counts = [...this.chartData.counts]
     this.renderChart()
   }
 
@@ -24,11 +23,11 @@ export class ChartsComponent implements OnInit {
     new Chart('charts', {
       type: 'bar',
       data: {
-        labels: ['Planned', 'In Progress', 'Completed'],
+        labels: this.chartData.labels,
         datasets: [
           {
             label: '# of Tasks',
-            data: this.counts,
+            data: this.chartData.counts,
             backgroundColor: ['Red', 'Blue', 'Green'],
             borderWidth: 1
           }

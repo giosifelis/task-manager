@@ -49,6 +49,13 @@
       "estimate": 4,
       "description": "go to watch a movie",
       "id": "6e3e"
+    },
+    {
+      "id": "95f7",
+      "name": "New Task",
+      "state": "PLANNED",
+      "estimate": 23,
+      "description": "New Task here"
     }
   ],
   "taskStates": [
