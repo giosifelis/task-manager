@@ -23,11 +23,11 @@
       "description": "Make lunch for everyone"
     },
     {
-      "id": "7f34",
       "name": "Record Music",
       "state": "COMPLETED",
       "estimate": 13,
-      "description": "Record my mew album"
+      "description": "Record my mew album",
+      "id": "7f34"
     },
     {
       "id": "5342",

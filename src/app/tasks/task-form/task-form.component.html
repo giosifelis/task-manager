@@ -4,7 +4,7 @@
     <div class="row first-row-input">
       <mat-form-field class="full-width">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="name..." formControlName="name" />
+        <input matInput placeholder="name..." formControlName="name" required />
       </mat-form-field>
     </div>
 
@@ -24,6 +24,7 @@
           type="number"
           placeholder="0"
           formControlName="estimate"
+          required
         />
       </mat-form-field>
     </div>
@@ -35,6 +36,7 @@
           matInput
           placeholder="task description..."
           formControlName="description"
+          required
         ></textarea>
       </mat-form-field>
     </div>

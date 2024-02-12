@@ -96,8 +96,17 @@ export class TaskFormComponent implements OnInit {
     })
   }
 
+  private inputValidation(value: string) {
+    return value === ''
+  }
+
   onSubmitForm() {
-    if (this.taskForm.valid) {
+    if (
+      this.taskForm.valid &&
+      (this.inputValidation(this.taskForm.value.name) ||
+        this.inputValidation(this.taskForm.value.description) ||
+        this.inputValidation(this.taskForm.value.state))
+    ) {
       switch (this.data.formAction) {
         case 'SAVE':
           this.handleSaveTask(this.taskForm.value)
