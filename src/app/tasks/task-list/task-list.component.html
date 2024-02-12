@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="grey">
+    <mat-list role="list">
+      @for (task of tasklist; track task; let first = $first, last = $last) {
+      <task [task]="task" (primaryAction)="taskPrimaryAction($event)"></task>
+      } @empty {
+      <empty-state></empty-state>
+      }
+    </mat-list>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions align="end">
+    <estimate-counter [count]="estimatecount"></estimate-counter>
+  </mat-card-actions>
+  <mat-card-footer> </mat-card-footer>
+</mat-card>

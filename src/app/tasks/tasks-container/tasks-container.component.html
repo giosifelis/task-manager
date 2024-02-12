@@ -1,0 +1,32 @@
+<top-header
+  [taskList]="taskList"
+  (newTaskAdded)="handleNewTaskAdded($event)"
+></top-header>
+
+<section class="main-body">
+  <div class="row">
+    <task-list
+      [title]="'Planned'"
+      [tasklist]="plannedTasks"
+      [estimatecount]="estimateCounts.planned"
+      (taskAction)="handleTaskAction($event)"
+    ></task-list>
+    <task-list
+      [title]="'In Progress'"
+      [tasklist]="inProgressTasks"
+      [estimatecount]="estimateCounts.inProgress"
+      (taskAction)="handleTaskAction($event)"
+    ></task-list>
+    <task-list
+      [title]="'Completed'"
+      [tasklist]="completedTasks"
+      [estimatecount]="estimateCounts.completed"
+      (taskAction)="handleTaskAction($event)"
+    ></task-list>
+  </div>
+  <br /><br />
+  <div class="row">
+    <tasks-charts [chartData]="chartData"></tasks-charts>
+  </div>
+</section>
+,

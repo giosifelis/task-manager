@@ -1,0 +1,6 @@
+.example-card {
+  width: 380px;
+}
+.example-card .grey {
+  background: rgba(0, 0, 0, 0.055);
+}

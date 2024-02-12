@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Task Form</h2>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmitForm()">
+  <mat-dialog-content>
+    <div class="row first-row-input">
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <!-- TODO:  replace words with language service -->
+        <input matInput placeholder="name..." formControlName="name" />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <mat-select formControlName="state">
+          <mat-option *ngFor="let state of taskStates" [value]="state.value">
+            {{ state.display }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Estimate</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="0"
+          formControlName="estimate"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="task description..."
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="actions">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" type="submit">
+      {{ data.formData ? 'Update' : 'Save' }}
+    </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,12 @@
+.task {
+  background: white;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 3px;
+}
+.task .example-spacer {
+  flex: 1 1 auto;
+}
+.task .mat-icon-button {
+  transform: scale(0.75);
+}
