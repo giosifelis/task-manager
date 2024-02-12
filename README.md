@@ -15,4 +15,5 @@ Run `npm run mock:server` for a data mock server. Navigate to `http://localhost:
 Other features that I would implement on a real enviroment
 
 1. Replace all language with a call to a server or a language file
+2. Upgraded form validation 
   
