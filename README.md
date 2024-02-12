@@ -9,3 +9,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Mock Server
 
 Run `npm run mock:server` for a data mock server. Navigate to `http://localhost:3000/`.
+
+## Notes
+
+Other features that I would implement on a real enviroment
+
+1. Replace all language with a call to a server or a language file
+  
