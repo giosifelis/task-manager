@@ -51,7 +51,6 @@ export class TasksContainerComponent {
     private _dialog: MatDialog
   ) {
     this.getTasks()
-    // this.getNewAddedTask()
   }
 
   @Input() taskList: Array<{ value: string; display: string }> = []
@@ -62,7 +61,7 @@ export class TasksContainerComponent {
     }, 0)
   }
 
-  private filterByState(array: Array<Task>) {
+  private processServerData(array: Array<Task>) {
     const planned = array.filter((f) => f.state === 'PLANNED')
     const inProgress = array.filter((f) => f.state === 'IN_PROGRESS')
     const completed = array.filter((f) => f.state === 'COMPLETED')
@@ -89,7 +88,7 @@ export class TasksContainerComponent {
       next: (res) => {
         alert('task deleted')
         this.serverData = this.serverData.filter((f) => f.id !== t.id)
-        this.filterByState(this.serverData)
+        this.processServerData(this.serverData)
       },
       error: (err) => {
         this._logger.error(err)
@@ -115,6 +114,21 @@ export class TasksContainerComponent {
     })
   }
 
+  private handleTaskUpdated(payload: any) {
+    const { id, task } = payload
+
+    this.serverData = this.serverData.map((m) => {
+      return m.id === id
+        ? {
+            ...m,
+            ...task
+          }
+        : { ...m }
+    })
+
+    this.processServerData(this.serverData)
+  }
+
   handleTaskAction(payload: TaskPayload) {
     const { actionType, data } = payload
     switch (actionType) {
@@ -131,7 +145,7 @@ export class TasksContainerComponent {
     this._taskService.getTasks().subscribe({
       next: (res) => {
         this.serverData = res
-        this.filterByState(this.serverData)
+        this.processServerData(this.serverData)
       },
       error: (err) => {
         this._logger.error(err)
@@ -139,22 +153,8 @@ export class TasksContainerComponent {
     })
   }
 
-  private handleTaskUpdated(payload: any) {
-    const { id, task } = payload
-
-    this.serverData = this.serverData.map((m) => {
-      return m.id === id
-        ? {
-            ...m,
-            ...task
-          }
-        : { ...m }
-    })
-
-    this.filterByState(this.serverData)
-  }
   handleNewTaskAdded(payload: Task) {
     this.serverData = [...this.serverData, payload]
-    this.filterByState(this.serverData)
+    this.processServerData(this.serverData)
   }
 }

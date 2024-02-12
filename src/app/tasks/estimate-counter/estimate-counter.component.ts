@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
-
-import { Task } from '../task/task'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'estimate-counter',

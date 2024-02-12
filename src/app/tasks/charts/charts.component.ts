@@ -1,5 +1,5 @@
 import { Chart, registerables } from 'chart.js'
-import { Component, Input, OnChanges, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 
 Chart.register(...registerables)
 
