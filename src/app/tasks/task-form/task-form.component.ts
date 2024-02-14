@@ -70,6 +70,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   private handleSaveTask(task: any) {
+    console.log('ddd::', task)
     this._taskService.addTask(task).subscribe({
       next: (val: any) => {
         alert('Task Added success')
@@ -101,12 +102,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   onSubmitForm() {
-    if (
-      this.taskForm.valid &&
-      (this.inputValidation(this.taskForm.value.name) ||
-        this.inputValidation(this.taskForm.value.description) ||
-        this.inputValidation(this.taskForm.value.state))
-    ) {
+    if (this.taskForm.valid) {
       switch (this.data.formAction) {
         case 'SAVE':
           this.handleSaveTask(this.taskForm.value)

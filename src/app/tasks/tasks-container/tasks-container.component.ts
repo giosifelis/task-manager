@@ -130,6 +130,7 @@ export class TasksContainerComponent {
   }
 
   handleTaskAction(payload: TaskPayload) {
+    console.log('payload:::', payload)
     const { actionType, data } = payload
     switch (actionType) {
       case 'EDIT':
